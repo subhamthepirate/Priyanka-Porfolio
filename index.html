@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Scroll View</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .scroll-container {
+            width: 100%;
+            height: 100vh; /* Full viewport height */
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-images {
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            white-space: nowrap;
+            width: 100%;
+            height: 100%;
+        }
+
+        .scroll-images img {
+            width: 100%; /* Full width */
+            height: auto; /* Maintain aspect ratio */
+            margin: 5px 0; /* Space between images */
+            flex-shrink: 0; /* Prevent image from shrinking */
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-container">
+        <div class="scroll-images" id="imageContainer">
+            <!-- Images will be dynamically added here -->
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        const imageContainer = document.getElementById('imageContainer');
+
+        // Define the number of images you want to load
+        const numberOfImages = 72; // Change this to the number of images you have
+
+        // Generate image sources dynamically
+        for (let i = 41; i <= numberOfImages; i++) {
+            const img = document.createElement('img');
+            img.src = `images/Wireframe - ${i}.jpg`; // Adjust the image path if needed
+            img.alt = `Image ${i}`; // Descriptive alt text
+            imageContainer.appendChild(img);
+        }
+
+        // Optional: Auto-scroll functionality
+        function autoScroll() {
+            imageContainer.scrollLeft += 1;
+            if (imageContainer.scrollLeft + imageContainer.clientWidth >= imageContainer.scrollWidth) {
+                imageContainer.scrollLeft = 0; // Reset scroll position
+            }
+        }
+
+            //setInterval(autoScroll, 20); // Adjust speed by changing the interval
+        });
+
+    </script>
+</body>
+</html>
