@@ -47,14 +47,17 @@
         const imageContainer = document.getElementById('imageContainer');
 
         // Define the number of images you want to load
-        const numberOfImages = 72; // Change this to the number of images you have
+        const numberOfImages = 79; // Change this to the number of images you have
 
         // Generate image sources dynamically
         for (let i = 41; i <= numberOfImages; i++) {
-            const img = document.createElement('img');
-            img.src = `images/Wireframe - ${i}.jpg`; // Adjust the image path if needed
-            img.alt = `Image ${i}`; // Descriptive alt text
-            imageContainer.appendChild(img);
+            const list = [48,53,54,61,70,71,74,78];
+            if( !list.includes(i)){
+                const img = document.createElement('img');
+                img.src = `images/Wireframe - ${i}.jpg`; // Adjust the image path if needed
+                img.alt = `Image ${i}`; // Descriptive alt text
+                imageContainer.appendChild(img);
+            }
         }
 
         // Optional: Auto-scroll functionality
